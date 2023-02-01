@@ -21,7 +21,7 @@ class StudentDbWithHashMapTest {
     }
 
     @Test
-    void CheckIfRemovesStudentDoesNotExistInHashMap() {
+    void CheckIfRemovesStudentDoesNotExistInHashMapAfterDeleting() {
         Map<Integer, Student> testStudentMap = new HashMap<>();
         StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
         Student max = new Student("Max", 1);
