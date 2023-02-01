@@ -1,10 +1,25 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Student {
 
     //Aufgabe 2 = Die Klasse Student hat zwei Attribute: name und id
     private String name;
     private int id;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return id == student.id && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, id);
+    }
 
     public Student(String name, int id) {
         this.name = name;

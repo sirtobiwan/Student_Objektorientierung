@@ -12,11 +12,14 @@ class StudentDbWithHashMapTest {
 
     @Test
     void checkIfAddedStudentIsInHashMap() {
+
         Map<Integer, Student> testStudentMap = new HashMap<>();
         StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
         Student max = new Student("Max", 1);
         studentDbWithHashMap.addStudent(max);
+
         Map<Integer, Student> studentMap = studentDbWithHashMap.getAllStudentsAsHashMap();
+
         assertTrue(studentMap.containsKey(max.getId()));
     }
 
@@ -27,8 +30,10 @@ class StudentDbWithHashMapTest {
         Student max = new Student("Max", 1);
         studentDbWithHashMap.addStudent(max);
         Student studentToDelete = new Student("Max", 1);
+
         studentDbWithHashMap.removeStudent(studentToDelete);
         Map<Integer, Student> studentMap = studentDbWithHashMap.getAllStudentsAsHashMap();
+
         assertFalse(studentMap.containsKey(studentToDelete.getId()));
     }
 
@@ -38,7 +43,9 @@ class StudentDbWithHashMapTest {
         StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
         Student max = new Student("Max", 1);
         studentDbWithHashMap.addStudent(max);
+
         Student student = studentDbWithHashMap.findById(1);
+
         assertEquals(max, student);
     }
 
@@ -46,10 +53,26 @@ class StudentDbWithHashMapTest {
     void findStudentByIdThrowsException() {
         Map<Integer, Student> testStudentMap = new HashMap<>();
         StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
+
         Student max = new Student("Max", 1);
         studentDbWithHashMap.addStudent(max);
+
         assertThrows(StudentIdNotFoundException.class, () -> studentDbWithHashMap.findById(2));
     }
 
+    @Test
+    void findStudentByIdThrowsExceptionWithTryAndCatch() {
+        Map<Integer, Student> testStudentMap = new HashMap<>();
+        StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
 
+        Student max = new Student("Max", 1);
+        studentDbWithHashMap.addStudent(max);
+
+        try {
+            studentDbWithHashMap.findById(2);
+            fail("Expected StudentIdNotFoundException");
+        } catch (StudentIdNotFoundException e) {
+            assertEquals("Student with id 2 not found", e.getMessage());
+        }
+    }
 }
