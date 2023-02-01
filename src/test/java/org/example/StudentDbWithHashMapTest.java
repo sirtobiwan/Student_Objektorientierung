@@ -41,12 +41,12 @@ class StudentDbWithHashMapTest {
     void findStudentById() throws StudentIdNotFoundException {
         Map<Integer, Student> testStudentMap = new HashMap<>();
         StudentDbWithHashMap studentDbWithHashMap = new StudentDbWithHashMap(testStudentMap);
-        Student max = new Student("Max", 1);
-        studentDbWithHashMap.addStudent(max);
+        Student expectedStudent = new Student("ExpectedStudent", 1);
+        studentDbWithHashMap.addStudent(expectedStudent);
 
-        Student student = studentDbWithHashMap.findById(1);
+        Student actualStudent = studentDbWithHashMap.findById(1);
 
-        assertEquals(max, student);
+        assertEquals(expectedStudent, actualStudent);
     }
 
     @Test
