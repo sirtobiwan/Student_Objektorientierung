@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws StudentIdNotFoundException {
@@ -41,6 +42,20 @@ public class Main {
         studentDbWithArray.removeStudent(studentArray[1]);
         System.out.println("Nach dem entfernen eines Studenten: " + studentDbWithArray);
 
+        //Eigene Variante mit ArrayList
+
+        ArrayList<Student> studentListNew = new ArrayList<>();
+        studentListNew.add(new Student("Tobi", 1111));
+        studentListNew.add(new Student("HHHHHH", 1112));
+
+
+        StudentDbArrayListOwn studentDbArrayListOwn = new StudentDbArrayListOwn(studentListNew);
+
+        System.out.println("Eigene ArrayList: " + studentDbArrayListOwn.getAllStudents());
+
+        studentListNew.add(new Student("AAAAA", 1113));
+
+        System.out.println("Eigene ArrayList: " + studentDbArrayListOwn.getAllStudents());
 
         //Hier die Variante mit einer ArrayList
 
