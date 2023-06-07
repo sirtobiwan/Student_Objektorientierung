@@ -43,7 +43,7 @@ public class Main {
         System.out.println("Nach dem entfernen eines Studenten: " + studentDbWithArray);
 
         //Eigene Variante mit ArrayList
-
+        /*
         ArrayList<Student> studentListNew = new ArrayList<>();
         studentListNew.add(new Student("Tobi", 1111));
         studentListNew.add(new Student("HHHHHH", 1112));
@@ -56,7 +56,7 @@ public class Main {
         studentListNew.add(new Student("AAAAA", 1113));
 
         System.out.println("Eigene ArrayList: " + studentDbArrayListOwn.getAllStudents());
-
+    */
         //Hier die Variante mit einer ArrayList
 
         ArrayList<Student> studentArrayList = new ArrayList<>();
